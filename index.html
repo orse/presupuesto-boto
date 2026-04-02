@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0078)file:///Users/orse.olsenjobandtalent.com/Downloads/presupuesto-familiar_3.html -->
+<!-- saved from url=(0078)file:///Users/orse.olsenjobandtalent.com/Downloads/presupuesto-familiar_4.html -->
 <html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +25,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",system-u
 input,select,textarea{font-family:inherit;font-size:15px;background:var(--sf);border:1.5px solid var(--bd);border-radius:var(--r);color:var(--tx);padding:10px 13px;width:100%;outline:none;transition:border-color .18s,box-shadow .18s;min-height:44px}
 input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,113,227,.15)}
 input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 textarea{min-height:36px;resize:none;line-height:1.4}
 button{font-family:inherit;cursor:pointer;font-size:15px;font-weight:500}
 .btn{background:var(--blue);color:#fff;border:none;border-radius:var(--r);padding:11px 20px;font-weight:600;font-size:15px;transition:background .18s;min-height:44px}
@@ -119,15 +121,15 @@ button{font-family:inherit;cursor:pointer;font-size:15px;font-weight:500}
 .b-cons{background:var(--teal-bg);color:var(--teal)}
 
 </style>
-</head>
+<script src="./index_files/xlsx.full.min.js"></script></head>
 <body>
 <div id="ls" style="display: none;">
   <div style="font-size:36px;color:#0071e3">◆</div>
   <div style="font-size:15px;font-weight:500;color:#1d1d1f;margin-top:8px">Conectando…</div>
   <div id="le" style="color:#ff3b30;font-size:14px;display:none;max-width:340px;text-align:center;line-height:1.7;margin-top:12px"></div>
 </div>
-<div id="app" style="display: block;"><header class="hdr"><div style="display:flex;align-items:center;gap:16px"><span style="font-weight:700;font-size:15px;color:var(--blue)">◆ Presupuesto</span><div style="display:flex;gap:6px"><select onchange="setMon(+this.value)" style="width:auto;padding:5px 9px;font-size:12px;background:var(--sf2)"><option value="0">Enero</option><option value="1">Febrero</option><option value="2">Marzo</option><option value="3" selected="">Abril</option><option value="4">Mayo</option><option value="5">Junio</option><option value="6">Julio</option><option value="7">Agosto</option><option value="8">Septiembre</option><option value="9">Octubre</option><option value="10">Noviembre</option><option value="11">Diciembre</option></select><select onchange="setYr(+this.value)" style="width:auto;padding:5px 9px;font-size:12px;background:var(--sf2)"><option value="2025">2025</option><option value="2026" selected="">2026</option><option value="2027">2027</option></select></div></div><div style="display:flex;align-items:center;gap:10px"><div class="av" style="width:30px;height:30px;font-size:13px;background:#007361">O</div><span style="font-size:13px;color:var(--tx2);font-weight:500">Olga</span><button class="btn-g sm" onclick="logout()">Salir</button></div></header><nav class="nav"><button class="tab-btn" onclick="setTab(&#39;budget&#39;)">Presupuesto</button><button class="tab-btn active" onclick="setTab(&#39;transactions&#39;)">Movimientos</button><button class="tab-btn" onclick="setTab(&#39;dashboard&#39;)">Dashboard</button><button class="tab-btn" onclick="setTab(&#39;advice&#39;)">Consejos</button></nav><main class="main"><div class="ph"><div class="pt">Movimientos — Abril 2026</div></div><div class="tx-cols"><div class="tx-panel"><div class="tx-ph"><div style="display:flex;align-items:center;gap:8px"><div class="av" style="width:28px;height:28px;font-size:12px;background:#6366f1">O</div><div><div style="font-weight:600;font-size:14px">Orse</div><div style="font-size:11px;color:var(--tx3)">1 movimientos · 0&nbsp;€ gastado</div></div></div><span style="font-size:12px;color:var(--tx3)">Solo lectura</span></div><div class="tx-body"><div class="empty">No hay movimientos.</div></div></div><div class="tx-panel"><div class="tx-ph"><div style="display:flex;align-items:center;gap:8px"><div class="av" style="width:28px;height:28px;font-size:12px;background:#007361">O</div><div><div style="font-weight:600;font-size:14px">Olga</div><div style="font-size:11px;color:var(--tx3)">1 movimientos · 0&nbsp;€ gastado</div></div></div><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><label class="btn btn-sm" style="cursor:pointer">Subir .xlsx<input type="file" accept=".xlsx,.xls" id="fi_u_1774724888063" data-uid="u_1774724888063" style="display:none"></label><button class="btn-g sm" onclick="toggleAF(&#39;u_1774724888063&#39;)">+ Manual</button><button class="btn-g sm red" onclick="clearTx(&#39;u_1774724888063&#39;)">Borrar todo</button></div></div><div class="tx-body"><div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;align-items:center"><div style="display:flex;gap:4px"><button class="btn-g sm active" onclick="setTxState(&#39;u_1774724888063&#39;,&#39;all&#39;)">Todos</button><button class="btn-g sm" onclick="setTxState(&#39;u_1774724888063&#39;,&#39;pending&#39;)">Pendientes</button><button class="btn-g sm" onclick="setTxState(&#39;u_1774724888063&#39;,&#39;done&#39;)">Categorizados</button><button class="btn-g sm" onclick="setTxState(&#39;u_1774724888063&#39;,&#39;ignored&#39;)">Ignorados</button></div></div><div class="empty">No hay movimientos.<br>Sube un extracto o añade manualmente.</div></div></div></div></main></div>
-<div id="toast" class="toast" style="background: rgb(21, 128, 61); color: rgb(255, 255, 255); display: none;">Movimiento a&amp;#241;adido &amp;#10003;</div>
+<div id="app" style="display: block;"><header class="hdr"><div style="display:flex;align-items:center;gap:16px"><span style="font-weight:700;font-size:15px;color:var(--blue)">◆ Presupuesto</span><div style="display:flex;gap:6px"><select onchange="setMon(+this.value)" style="width:auto;padding:5px 9px;font-size:12px;background:var(--sf2)"><option value="0">Enero</option><option value="1">Febrero</option><option value="2">Marzo</option><option value="3" selected="">Abril</option><option value="4">Mayo</option><option value="5">Junio</option><option value="6">Julio</option><option value="7">Agosto</option><option value="8">Septiembre</option><option value="9">Octubre</option><option value="10">Noviembre</option><option value="11">Diciembre</option></select><select onchange="setYr(+this.value)" style="width:auto;padding:5px 9px;font-size:12px;background:var(--sf2)"><option value="2025">2025</option><option value="2026" selected="">2026</option><option value="2027">2027</option></select></div></div><div style="display:flex;align-items:center;gap:10px"><div class="av" style="width:30px;height:30px;font-size:13px;background:#6366f1">O</div><span style="font-size:13px;color:var(--tx2);font-weight:500">Orse</span><button class="btn-g sm" onclick="logout()">Salir</button></div></header><nav class="nav"><button class="tab-btn" onclick="setTab(&#39;budget&#39;)">Presupuesto</button><button class="tab-btn active" onclick="setTab(&#39;transactions&#39;)">Movimientos</button><button class="tab-btn" onclick="setTab(&#39;dashboard&#39;)">Dashboard</button><button class="tab-btn" onclick="setTab(&#39;advice&#39;)">Consejos</button></nav><main class="main"><div class="ph"><div class="pt">Movimientos — Abril 2026</div></div><div class="tx-cols"><div class="tx-panel"><div class="tx-ph"><div style="display:flex;align-items:center;gap:8px"><div class="av" style="width:28px;height:28px;font-size:12px;background:#6366f1">O</div><div><div style="font-weight:600;font-size:14px">Orse</div><div style="font-size:11px;color:var(--tx3)">7 movimientos · 469,47&nbsp;€ gastado</div></div></div><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><label class="btn btn-sm" style="cursor:pointer">Subir .xlsx<input type="file" accept=".xlsx,.xls" id="fi_u_1774685226687" data-uid="u_1774685226687" style="display:none"></label><button class="btn-g sm" onclick="toggleAF(&#39;u_1774685226687&#39;)">+ Manual</button><button class="btn-g sm red" onclick="clearTx(&#39;u_1774685226687&#39;)">Borrar todo</button></div></div><div class="tx-body"><div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;align-items:center"><div style="display:flex;gap:4px"><button class="btn-g sm active" onclick="setTxState(&#39;u_1774685226687&#39;,&#39;all&#39;)">Todos</button><button class="btn-g sm" onclick="setTxState(&#39;u_1774685226687&#39;,&#39;pending&#39;)">Pendientes</button><button class="btn-g sm" onclick="setTxState(&#39;u_1774685226687&#39;,&#39;done&#39;)">Categorizados</button><button class="btn-g sm" onclick="setTxState(&#39;u_1774685226687&#39;,&#39;ignored&#39;)">Ignorados</button></div></div><div class="tx-row" style="background:#f0fdf4;border-color:#86efac;"><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500;word-break:break-word;">Pago en FAMILY ENERGY AZUQUECA ACEQUILLA ES</div><div style="font-size:11px;color:var(--blue);margin-top:2px;font-weight:500">Gasolina y combustible</div><div style="font-size:11px;color:var(--tx3);margin-top:2px">2026-04-02</div></div><div style="display:flex;align-items:center;gap:6px;flex-shrink:0"><div style="position:relative;display:inline-block"><input type="text" list="cl_3vpmz" class="cat-search" value="Gasolina" onchange="sCat(&#39;u_1774685226687&#39;,&#39;u_1774685226687_i_1775160486062_0&#39;,this.value)" style="width:160px;margin:0;font-size:12px;padding:5px 8px;min-height:36px" placeholder="Buscar categoria..."><datalist id="cl_3vpmz"><option value="Sin categoria" data-id=""></option><option value="Ingresos durante el mes" data-id="ingresos_mes"></option><option value="Prestamo casa" data-id="prest_casa"></option><option value="Prestamo coche" data-id="prest_coche"></option><option value="Prestamo placas solares" data-id="prest_solar"></option><option value="Prestamo autocaravana" data-id="prest_auto"></option><option value="Prestamo banco caminos" data-id="prest_cam"></option><option value="Seguros" data-id="seguros"></option><option value="Donaciones" data-id="donaciones"></option><option value="Ahorro" data-id="ahorro_fijo"></option><option value="Limpieza hogar" data-id="limpieza"></option><option value="Otros gastos fijos" data-id="otros_fijos"></option><option value="Supermercados" data-id="supermercado"></option><option value="Casa: gasoil" data-id="gasoil"></option><option value="Casa: lena" data-id="lena"></option><option value="Casa: mantenimiento" data-id="mant_casa"></option><option value="Casa: Luz" data-id="luz"></option><option value="Casa: Agua" data-id="agua"></option><option value="Casa: Telefono + internet" data-id="tel_inet"></option><option value="Gasolina" data-id="gasolina"></option><option value="Mant. coches + furgo + moto" data-id="mant_coches"></option><option value="Extraescolares" data-id="extraesc"></option><option value="Terapia y salud Orse" data-id="salud_orse"></option><option value="Efectivo cajero" data-id="cajero"></option><option value="Comisiones banco" data-id="comisiones"></option><option value="Peajes, parking, aparcamiento" data-id="peajes"></option><option value="Transportes (bus, taxi...)" data-id="transporte"></option><option value="Formacion" data-id="formacion"></option><option value="Terapia y salud Olga" data-id="salud_olga"></option><option value="Gatos" data-id="gatos"></option><option value="Impuestos" data-id="impuestos"></option><option value="Multas" data-id="multas"></option><option value="Otros gastos variables" data-id="otros_var"></option><option value="Ocio familiar: comidas, salir" data-id="ocio_fam"></option><option value="Vacaciones" data-id="vacaciones"></option><option value="Suscripciones" data-id="suscripciones"></option><option value="Ocio Orse" data-id="ocio_orse"></option><option value="Ocio Olga" data-id="ocio_olga"></option><option value="Ropa Olga y Orse" data-id="ropa"></option><option value="Tecnologia" data-id="tecnologia"></option><option value="Compras de Teo y Bruno" data-id="ninos_compras"></option><option value="Regalos" data-id="regalos"></option><option value="Ninos (psicologo, pagas, ropa, cole)" data-id="ninos"></option><option value="x Ignorar" data-id="ignorar"></option></datalist></div><span style="font-weight:700;font-size:13px;min-width:64px;text-align:right;color:var(--red)">-50&nbsp;€</span><button class="btn-del" onclick="delTx(&#39;u_1774685226687&#39;,&#39;u_1774685226687_i_1775160486062_0&#39;)">×</button></div></div><div class="tx-row" style="background:#f0fdf4;border-color:#86efac;"><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500;word-break:break-word;">Recibo AXA AURORA VIDA S.A.     CIF  A-48464606</div><div style="font-size:11px;color:var(--blue);margin-top:2px;font-weight:500">Seguro de vida</div><div style="font-size:11px;color:var(--tx3);margin-top:2px">2026-04-02</div></div><div style="display:flex;align-items:center;gap:6px;flex-shrink:0"><div style="position:relative;display:inline-block"><input type="text" list="cl_dkrfx" class="cat-search" value="Seguros" onchange="sCat(&#39;u_1774685226687&#39;,&#39;u_1774685226687_i_1775160486062_1&#39;,this.value)" style="width:160px;margin:0;font-size:12px;padding:5px 8px;min-height:36px" placeholder="Buscar categoria..."><datalist id="cl_dkrfx"><option value="Sin categoria" data-id=""></option><option value="Ingresos durante el mes" data-id="ingresos_mes"></option><option value="Prestamo casa" data-id="prest_casa"></option><option value="Prestamo coche" data-id="prest_coche"></option><option value="Prestamo placas solares" data-id="prest_solar"></option><option value="Prestamo autocaravana" data-id="prest_auto"></option><option value="Prestamo banco caminos" data-id="prest_cam"></option><option value="Seguros" data-id="seguros"></option><option value="Donaciones" data-id="donaciones"></option><option value="Ahorro" data-id="ahorro_fijo"></option><option value="Limpieza hogar" data-id="limpieza"></option><option value="Otros gastos fijos" data-id="otros_fijos"></option><option value="Supermercados" data-id="supermercado"></option><option value="Casa: gasoil" data-id="gasoil"></option><option value="Casa: lena" data-id="lena"></option><option value="Casa: mantenimiento" data-id="mant_casa"></option><option value="Casa: Luz" data-id="luz"></option><option value="Casa: Agua" data-id="agua"></option><option value="Casa: Telefono + internet" data-id="tel_inet"></option><option value="Gasolina" data-id="gasolina"></option><option value="Mant. coches + furgo + moto" data-id="mant_coches"></option><option value="Extraescolares" data-id="extraesc"></option><option value="Terapia y salud Orse" data-id="salud_orse"></option><option value="Efectivo cajero" data-id="cajero"></option><option value="Comisiones banco" data-id="comisiones"></option><option value="Peajes, parking, aparcamiento" data-id="peajes"></option><option value="Transportes (bus, taxi...)" data-id="transporte"></option><option value="Formacion" data-id="formacion"></option><option value="Terapia y salud Olga" data-id="salud_olga"></option><option value="Gatos" data-id="gatos"></option><option value="Impuestos" data-id="impuestos"></option><option value="Multas" data-id="multas"></option><option value="Otros gastos variables" data-id="otros_var"></option><option value="Ocio familiar: comidas, salir" data-id="ocio_fam"></option><option value="Vacaciones" data-id="vacaciones"></option><option value="Suscripciones" data-id="suscripciones"></option><option value="Ocio Orse" data-id="ocio_orse"></option><option value="Ocio Olga" data-id="ocio_olga"></option><option value="Ropa Olga y Orse" data-id="ropa"></option><option value="Tecnologia" data-id="tecnologia"></option><option value="Compras de Teo y Bruno" data-id="ninos_compras"></option><option value="Regalos" data-id="regalos"></option><option value="Ninos (psicologo, pagas, ropa, cole)" data-id="ninos"></option><option value="x Ignorar" data-id="ignorar"></option></datalist></div><span style="font-weight:700;font-size:13px;min-width:64px;text-align:right;color:var(--red)">-145,84&nbsp;€</span><button class="btn-del" onclick="delTx(&#39;u_1774685226687&#39;,&#39;u_1774685226687_i_1775160486062_1&#39;)">×</button></div></div><div class="tx-row" style="background:#f0fdf4;border-color:#86efac;"><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500;word-break:break-word;">Recibo BANCO BILBAO VIZCAYA ARGENTARIA S.A.</div><div style="font-size:11px;color:var(--blue);margin-top:2px;font-weight:500">Otros préstamos y avales</div><div style="font-size:11px;color:var(--tx3);margin-top:2px">2026-04-02</div></div><div style="display:flex;align-items:center;gap:6px;flex-shrink:0"><div style="position:relative;display:inline-block"><input type="text" list="cl_diukv" class="cat-search" value="Prestamo placas solares" onchange="sCat(&#39;u_1774685226687&#39;,&#39;u_1774685226687_i_1775160486062_3&#39;,this.value)" style="width:160px;margin:0;font-size:12px;padding:5px 8px;min-height:36px" placeholder="Buscar categoria..."><datalist id="cl_diukv"><option value="Sin categoria" data-id=""></option><option value="Ingresos durante el mes" data-id="ingresos_mes"></option><option value="Prestamo casa" data-id="prest_casa"></option><option value="Prestamo coche" data-id="prest_coche"></option><option value="Prestamo placas solares" data-id="prest_solar"></option><option value="Prestamo autocaravana" data-id="prest_auto"></option><option value="Prestamo banco caminos" data-id="prest_cam"></option><option value="Seguros" data-id="seguros"></option><option value="Donaciones" data-id="donaciones"></option><option value="Ahorro" data-id="ahorro_fijo"></option><option value="Limpieza hogar" data-id="limpieza"></option><option value="Otros gastos fijos" data-id="otros_fijos"></option><option value="Supermercados" data-id="supermercado"></option><option value="Casa: gasoil" data-id="gasoil"></option><option value="Casa: lena" data-id="lena"></option><option value="Casa: mantenimiento" data-id="mant_casa"></option><option value="Casa: Luz" data-id="luz"></option><option value="Casa: Agua" data-id="agua"></option><option value="Casa: Telefono + internet" data-id="tel_inet"></option><option value="Gasolina" data-id="gasolina"></option><option value="Mant. coches + furgo + moto" data-id="mant_coches"></option><option value="Extraescolares" data-id="extraesc"></option><option value="Terapia y salud Orse" data-id="salud_orse"></option><option value="Efectivo cajero" data-id="cajero"></option><option value="Comisiones banco" data-id="comisiones"></option><option value="Peajes, parking, aparcamiento" data-id="peajes"></option><option value="Transportes (bus, taxi...)" data-id="transporte"></option><option value="Formacion" data-id="formacion"></option><option value="Terapia y salud Olga" data-id="salud_olga"></option><option value="Gatos" data-id="gatos"></option><option value="Impuestos" data-id="impuestos"></option><option value="Multas" data-id="multas"></option><option value="Otros gastos variables" data-id="otros_var"></option><option value="Ocio familiar: comidas, salir" data-id="ocio_fam"></option><option value="Vacaciones" data-id="vacaciones"></option><option value="Suscripciones" data-id="suscripciones"></option><option value="Ocio Orse" data-id="ocio_orse"></option><option value="Ocio Olga" data-id="ocio_olga"></option><option value="Ropa Olga y Orse" data-id="ropa"></option><option value="Tecnologia" data-id="tecnologia"></option><option value="Compras de Teo y Bruno" data-id="ninos_compras"></option><option value="Regalos" data-id="regalos"></option><option value="Ninos (psicologo, pagas, ropa, cole)" data-id="ninos"></option><option value="x Ignorar" data-id="ignorar"></option></datalist></div><span style="font-weight:700;font-size:13px;min-width:64px;text-align:right;color:var(--red)">-100,3&nbsp;€</span><button class="btn-del" onclick="delTx(&#39;u_1774685226687&#39;,&#39;u_1774685226687_i_1775160486062_3&#39;)">×</button></div></div><div class="tx-row" style="background:#f0fdf4;border-color:#86efac;"><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500;word-break:break-word;">Bizum enviado a MARIA LUISA FERNANDEZ MARTIN nomina Marzo</div><div style="font-size:11px;color:var(--blue);margin-top:2px;font-weight:500">Gasto Bizum</div><div style="font-size:11px;color:var(--tx3);margin-top:2px">2026-04-01</div></div><div style="display:flex;align-items:center;gap:6px;flex-shrink:0"><div style="position:relative;display:inline-block"><input type="text" list="cl_d66is" class="cat-search" value="Limpieza hogar" onchange="sCat(&#39;u_1774685226687&#39;,&#39;u_1774685226687_i_1775160486062_4&#39;,this.value)" style="width:160px;margin:0;font-size:12px;padding:5px 8px;min-height:36px" placeholder="Buscar categoria..."><datalist id="cl_d66is"><option value="Sin categoria" data-id=""></option><option value="Ingresos durante el mes" data-id="ingresos_mes"></option><option value="Prestamo casa" data-id="prest_casa"></option><option value="Prestamo coche" data-id="prest_coche"></option><option value="Prestamo placas solares" data-id="prest_solar"></option><option value="Prestamo autocaravana" data-id="prest_auto"></option><option value="Prestamo banco caminos" data-id="prest_cam"></option><option value="Seguros" data-id="seguros"></option><option value="Donaciones" data-id="donaciones"></option><option value="Ahorro" data-id="ahorro_fijo"></option><option value="Limpieza hogar" data-id="limpieza"></option><option value="Otros gastos fijos" data-id="otros_fijos"></option><option value="Supermercados" data-id="supermercado"></option><option value="Casa: gasoil" data-id="gasoil"></option><option value="Casa: lena" data-id="lena"></option><option value="Casa: mantenimiento" data-id="mant_casa"></option><option value="Casa: Luz" data-id="luz"></option><option value="Casa: Agua" data-id="agua"></option><option value="Casa: Telefono + internet" data-id="tel_inet"></option><option value="Gasolina" data-id="gasolina"></option><option value="Mant. coches + furgo + moto" data-id="mant_coches"></option><option value="Extraescolares" data-id="extraesc"></option><option value="Terapia y salud Orse" data-id="salud_orse"></option><option value="Efectivo cajero" data-id="cajero"></option><option value="Comisiones banco" data-id="comisiones"></option><option value="Peajes, parking, aparcamiento" data-id="peajes"></option><option value="Transportes (bus, taxi...)" data-id="transporte"></option><option value="Formacion" data-id="formacion"></option><option value="Terapia y salud Olga" data-id="salud_olga"></option><option value="Gatos" data-id="gatos"></option><option value="Impuestos" data-id="impuestos"></option><option value="Multas" data-id="multas"></option><option value="Otros gastos variables" data-id="otros_var"></option><option value="Ocio familiar: comidas, salir" data-id="ocio_fam"></option><option value="Vacaciones" data-id="vacaciones"></option><option value="Suscripciones" data-id="suscripciones"></option><option value="Ocio Orse" data-id="ocio_orse"></option><option value="Ocio Olga" data-id="ocio_olga"></option><option value="Ropa Olga y Orse" data-id="ropa"></option><option value="Tecnologia" data-id="tecnologia"></option><option value="Compras de Teo y Bruno" data-id="ninos_compras"></option><option value="Regalos" data-id="regalos"></option><option value="Ninos (psicologo, pagas, ropa, cole)" data-id="ninos"></option><option value="x Ignorar" data-id="ignorar"></option></datalist></div><span style="font-weight:700;font-size:13px;min-width:64px;text-align:right;color:var(--red)">-173,33&nbsp;€</span><button class="btn-del" onclick="delTx(&#39;u_1774685226687&#39;,&#39;u_1774685226687_i_1775160486062_4&#39;)">×</button></div></div></div></div><div class="tx-panel"><div class="tx-ph"><div style="display:flex;align-items:center;gap:8px"><div class="av" style="width:28px;height:28px;font-size:12px;background:#007361">O</div><div><div style="font-weight:600;font-size:14px">Olga</div><div style="font-size:11px;color:var(--tx3)">1 movimientos · 0&nbsp;€ gastado</div></div></div><span style="font-size:12px;color:var(--tx3)">Solo lectura</span></div><div class="tx-body"><div class="empty">No hay movimientos.</div></div></div></div></main></div>
+<div id="toast" class="toast" style="background: rgb(21, 128, 61); color: rgb(255, 255, 255); display: none;">Presupuesto guardado &amp;#10003;</div>
 <script>
 
 // ═══ FIRESTORE REST API ════════════════════════════════════════════════════
@@ -193,12 +195,7 @@ function fbSet(col, id, data) {
 
 // ═══ CATEGORIES ════════════════════════════════════════════════════════════
 var CATS = [
-  { id: "ingresos",      name: "Ingresos",                            g: "income" },
-  { id: "pensiones",     name: "Pensiones",                           g: "income" },
-  { id: "alquileres",    name: "Alquileres",                          g: "income" },
-  { id: "dividendos",    name: "Dividendos",                          g: "income" },
-  { id: "acciones",      name: "Acciones",                            g: "income" },
-  { id: "otros_ing",     name: "Otros ingresos",                      g: "income" },
+  { id: "ingresos_mes",  name: "Ingresos durante el mes",            g: "income" },
   { id: "prest_casa",    name: "Prestamo casa",                       g: "fixed"  },
   { id: "prest_coche",   name: "Prestamo coche",                      g: "fixed"  },
   { id: "prest_solar",   name: "Prestamo placas solares",             g: "fixed"  },
@@ -242,7 +239,6 @@ var CATS = [
   { id: "ninos",         name: "Ninos (psicologo, pagas, ropa, cole)", g: "leisure" }
 ];
 var GROUPS = [
-  { id: "income",   label: "Ingresos" },
   { id: "fixed",    label: "Gastos fijos" },
   { id: "variable", label: "Gastos variables" },
   { id: "leisure",  label: "Gastos ocio" }
@@ -262,7 +258,8 @@ var S = {
   importing: {}, labeling: {},
   addForm: {},
   adviceText: "", adviceLoading: false,
-  collapsed: { income: true, fixed: true, variable: true, leisure: true },
+  collapsed: { fixed: true, variable: true, leisure: true },
+  disponible: {},
   txState: {},
   txCatFilter: {}
 };
@@ -275,7 +272,24 @@ function getBud(uid) { return ((S.budgets[mk()] || {})[uid]) || {}; }
 function getNotes(uid) { return ((S.notes[mk()] || {})[uid]) || {}; }
 function sumBG(uid, g) { return catsG(g).reduce(function(s, c) { return s + (+(getBud(uid)[c.id] || 0)); }, 0); }
 function totBudSpend(uid) { return ["fixed","variable","leisure"].reduce(function(s, g) { return s + sumBG(uid, g); }, 0); }
-function totIncome(uid) { return sumBG(uid, "income"); }
+// "Disponible para este mes" — shared field stored in budget shared doc
+function getDisponible() {
+  var m = mk();
+  return (S.disponible && S.disponible[m]) ? +S.disponible[m] : 0;
+}
+// Income from transactions categorized as ingresos_mes (all users combined)
+function ingresosMes() {
+  var total = 0;
+  allUsers().forEach(function(u) {
+    getTx(u.id).forEach(function(t) {
+      if (t.categoryId === "ingresos_mes" && !t.deleted && t.amount > 0) total += t.amount;
+    });
+  });
+  return total;
+}
+// Total available = disponible field + ingresos_mes transactions
+function totDisponible() { return getDisponible() + ingresosMes(); }
+function totIncome(uid) { return sumBG(uid, "income"); } // kept for compat but unused
 function totSpent(uid) {
   return getTx(uid).filter(function(t) { return t.categoryId && t.categoryId !== "ignorar" && !t.deleted && t.amount < 0; })
     .reduce(function(s, t) { return s + Math.abs(t.amount); }, 0);
@@ -407,14 +421,48 @@ window.toggleGrp = function(id) { S.collapsed[id] = !S.collapsed[id]; readBudDOM
 
 function budHtml() {
   var us = allUsers();
+  var disp = getDisponible();
+  var ingMes = ingresosMes();
+  var totDisp = disp + ingMes;
+
+  // Disponible card (shared, single input)
+  var dispCard = "<div class=\"grp-card\" style=\"margin-bottom:16px\">"
+    + "<div class=\"grp-hdr collapsed\" style=\"cursor:default\">"
+    + "<span style=\"font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--tx3)\">Disponible para este mes</span>"
+    + "</div>"
+    + "<div style=\"padding:16px 20px;display:flex;align-items:center;gap:24px;flex-wrap:wrap\">"
+    + "<div>"
+    + "<div style=\"font-size:11px;color:var(--tx3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em\">Ahorro disponible</div>"
+    + "<div style=\"display:flex;align-items:center;gap:8px\">"
+    + "<input type=\"text\" id=\"disp_input\" value=\"" + (disp || "") + "\" placeholder=\"0\" oninput=\"onDispChg()\" onblur=\"onDispBlur()\""
+    + " style=\"width:180px;font-size:18px;font-weight:700;text-align:right;border:1.5px solid var(--bd2);border-radius:var(--r);padding:8px 12px\">"
+    + "<span style=\"font-size:13px;color:var(--tx3)\">€</span>"
+    + "</div>"
+    + "<div style=\"font-size:12px;color:var(--tx3);margin-top:4px\">Campo compartido Orse + Olga</div>"
+    + "</div>"
+    + (ingMes > 0 ? "<div style=\"padding:12px 16px;background:var(--green-bg);border-radius:var(--r);border:1px solid #86efac\">"
+        + "<div style=\"font-size:11px;color:var(--green);margin-bottom:2px;text-transform:uppercase;letter-spacing:.06em\">+ Ingresos del mes</div>"
+        + "<div style=\"font-size:18px;font-weight:700;color:var(--green)\">+" + euro(ingMes) + "</div>"
+        + "</div>" : "")
+    + "<div style=\"padding:12px 16px;background:var(--blue-bg);border-radius:var(--r);border:1px solid #93c5fd\">"
+    + "<div style=\"font-size:11px;color:var(--blue);margin-bottom:2px;text-transform:uppercase;letter-spacing:.06em\">Total disponible</div>"
+    + "<div style=\"font-size:22px;font-weight:700;color:var(--blue)\">" + euro(totDisp) + "</div>"
+    + "</div>"
+    + "</div></div>";
+
+  // Expense group cards (fixed, variable, leisure only)
   var grpCards = GROUPS.map(function(grp) {
-    // Default collapsed unless user has explicitly expanded (value === false)
     var coll = S.collapsed[grp.id] === false ? false : true;
     var thUs = us.map(function(u) {
-      return "<th colspan=\"2\" style=\"min-width:240px;text-align:center;padding:12px\">"
-        + "<div style=\"display:flex;align-items:center;justify-content:center;gap:7px;color:" + (u.color || "#6366f1") + "\">"
-        + "<div class=\"av\" style=\"width:22px;height:22px;font-size:9px;background:" + (u.color || "#6366f1") + "\">" + u.name[0].toUpperCase() + "</div>"
-        + "<span style=\"font-size:14px;font-weight:600\">" + u.name + "</span></div></th>";
+      var uc = u.color || "#6366f1";
+      var uc_bg = uc + "12";
+      return "<th style=\"min-width:130px;text-align:center;padding:8px 8px 4px;background:" + uc_bg + ";border-bottom:2px solid " + uc + "\">"
+        + "<div style=\"display:flex;align-items:center;justify-content:center;gap:6px;color:" + uc + "\">"
+        + "<div class=\"av\" style=\"width:20px;height:20px;font-size:9px;background:" + uc + "\">" + u.name[0].toUpperCase() + "</div>"
+        + "<span style=\"font-size:13px;font-weight:700\">" + u.name + "</span></div>"
+        + "<div style=\"font-size:10px;color:" + uc + ";opacity:.7;margin-top:2px\">Importe</div></th>"
+        + "<th style=\"min-width:130px;text-align:center;padding:8px 8px 4px;background:" + uc_bg + ";border-bottom:2px solid " + uc + "\">"
+        + "<div style=\"font-size:10px;color:" + uc + ";opacity:.7;padding-top:20px\">Nota</div></th>";
     }).join("") + "<th style=\"min-width:120px;text-align:right;padding:12px 20px\"><span class=\"badge b-cons\">Consolidado</span></th>";
 
     var catRows = "";
@@ -428,23 +476,20 @@ function budHtml() {
           var ucbg = uc + "12";
           return "<td style=\"padding:8px 8px;width:140px;background:" + ucbg + "\">"
             + "<div style=\"display:flex;align-items:center;gap:4px\">"
-            + "<input type=\"number\" min=\"0\" placeholder=\"0\" class=\"ni\" data-uid=\"" + u.id + "\" data-cat=\"" + cat.id + "\" value=\"" + val + "\" style=\"flex:1;min-width:80px;border-color:" + uc + "55\">"
+            + "<input type=\"text\" inputmode=\"decimal\" min=\"0\" placeholder=\"0\" class=\"ni\" data-uid=\"" + u.id + "\" data-cat=\"" + cat.id + "\" value=\"" + val + "\" style=\"flex:1;min-width:80px;border-color:" + uc + "55\">"
             + "<span class=\"tt\"><button class=\"info-b\" tabindex=\"-1\">i</button><div class=\"tt-box\">" + ttHtml + "</div></span>"
             + "</div></td>"
             + "<td style=\"padding:8px 10px;min-width:130px;background:" + ucbg + "\">"
             + "<textarea class=\"note-i\" placeholder=\"Nota...\" data-un=\"" + u.id + "\" data-cn=\"" + cat.id + "\">" + esc(note) + "</textarea></td>";
         }).join("");
         var cons = us.reduce(function(s, u) { return s + (+(getBud(u.id)[cat.id] || 0)); }, 0);
-        var consS = cons > 0
-          ? "<span style=\"font-weight:600\">" + euro(cons) + "</span>"
-          : "<span style=\"color:var(--tx3)\">&#8212;</span>";
+        var consS = cons > 0 ? "<span style=\"font-weight:600\">" + euro(cons) + "</span>" : "<span style=\"color:var(--tx3)\">&#8212;</span>";
         catRows += "<tr style=\"border-bottom:1px solid var(--bd)\">"
           + "<td style=\"padding:13px 20px;color:var(--tx2);font-size:15px;min-width:200px\">" + cat.name + "</td>"
           + uCells
           + "<td style=\"padding:13px 24px 13px 12px;text-align:right;min-width:120px\">" + consS + "</td>"
           + "</tr>";
       });
-      // Total row
       var totCells = us.map(function(u) {
         return "<td style=\"padding:12px 8px;text-align:right;font-weight:700\">" + euro(sumBG(u.id, grp.id)) + "</td><td style=\"padding:12px 12px\"></td>";
       }).join("");
@@ -457,40 +502,37 @@ function budHtml() {
     }
 
     return "<div class=\"grp-card\">"
-      + "<div class=\"grp-hdr" + (coll ? " collapsed" : "") + "\" onclick=\"toggleGrp('" + grp.id + "')\">"
-      + "<span style=\"font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--tx3)\">" + grp.label + "</span>"
-      + "<span style=\"font-size:12px;color:var(--tx3)\">" + (coll ? "&#9654;" : "&#9660;") + "</span>"
-      + "</div>"
-      + (coll ? "" :
-          "<div style=\"overflow-x:auto\">"
-          + "<table class=\"budget-tbl\">"
-          + "<thead><tr>"
+      + "<div class=\"grp-hdr" + (coll ? " collapsed" : "") + "\" onclick=\"toggleGrp('" + grp.id + "')\"><span style=\"font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--tx3)\">" + grp.label + "</span>"
+      + "<span style=\"font-size:12px;color:var(--tx3)\">" + (coll ? "&#9654;" : "&#9660;") + "</span></div>"
+      + (coll ? "" : "<div style=\"overflow-x:auto\"><table class=\"budget-tbl\"><thead><tr>"
           + "<th class=\"lft\" style=\"min-width:200px;padding:12px 20px\">Categor&#237;a</th>"
-          + thUs
-          + "</tr></thead><tbody>" + catRows + "</tbody></table></div>"
-        )
+          + thUs + "</tr></thead><tbody>" + catRows + "</tbody></table></div>")
       + "</div>";
   }).join("");
 
-  // Sticky balance bar
-  var consInc = us.reduce(function(s, u) { return s + sumBG(u.id, "income"); }, 0);
-  var consExp = us.reduce(function(s, u) { return s + totBudSpend(u.id); }, 0);
-  var consBal = consInc - consExp;
-  var userBals = us.map(function(u) {
-    var b = sumBG(u.id, "income") - totBudSpend(u.id);
-    return "<div style=\"display:flex;align-items:center;gap:8px\">"
-      + "<div class=\"av\" style=\"width:22px;height:22px;font-size:9px;background:" + (u.color || "#6366f1") + "\">" + u.name[0].toUpperCase() + "</div>"
-      + "<span style=\"font-size:13px;color:var(--tx3)\">" + u.name + "</span>"
-      + "<span style=\"font-size:16px;font-weight:700;color:" + (b >= 0 ? "var(--green)" : "var(--red)") + "\">" + euro(b) + "</span>"
+  // Sticky bar: "X necesita Y€" + progress bar vs disponible
+  var totExp = us.reduce(function(s, u) { return s + totBudSpend(u.id); }, 0);
+  var pctDisp = totDisp > 0 ? Math.min(totExp / totDisp * 100, 100) : 0;
+  var pctColor = pctDisp > 100 ? "var(--red)" : pctDisp > 85 ? "var(--yellow)" : "var(--green)";
+  var userNeeds = us.map(function(u) {
+    var need = totBudSpend(u.id);
+    var uc = u.color || "#6366f1";
+    return "<div style=\"display:flex;align-items:center;gap:6px\">"
+      + "<div class=\"av\" style=\"width:22px;height:22px;font-size:9px;background:" + uc + "\">" + u.name[0].toUpperCase() + "</div>"
+      + "<span style=\"font-size:13px;color:var(--tx2)\">" + u.name + " necesita</span>"
+      + "<span style=\"font-size:16px;font-weight:700;color:" + uc + "\">" + euro(need) + "</span>"
       + "</div>";
   }).join("");
-
   var balBar = "<div class=\"bal-bar\"><div class=\"bal-inner\">"
-    + "<div style=\"display:flex;gap:28px;flex-wrap:wrap\">" + userBals + "</div>"
-    + "<div style=\"display:flex;align-items:center;gap:10px\">"
-    + "<span style=\"font-size:13px;color:var(--tx3);font-weight:500\">Balance consolidado</span>"
-    + "<span style=\"font-size:20px;font-weight:700;color:" + (consBal >= 0 ? "var(--green)" : "var(--red)") + "\">" + euro(consBal) + "</span>"
-    + "</div></div></div>";
+    + "<div style=\"display:flex;gap:24px;flex-wrap:wrap\">" + userNeeds + "</div>"
+    + "<div style=\"display:flex;align-items:center;gap:12px;min-width:220px\">"
+    + "<div style=\"flex:1\">"
+    + "<div style=\"display:flex;justify-content:space-between;font-size:12px;color:var(--tx3);margin-bottom:4px\">"
+    + "<span>Gasto vs. disponible</span><span style=\"font-weight:700;color:" + pctColor + "\">" + Math.round(pctDisp) + "%</span></div>"
+    + "<div class=\"bar-bg\" style=\"height:8px\"><div class=\"bar-fill\" style=\"width:" + Math.min(pctDisp,100) + "%;background:" + pctColor + "\"></div></div>"
+    + "<div style=\"font-size:11px;color:var(--tx3);margin-top:3px\">" + euro(totExp) + " de " + euro(totDisp) + " disponibles</div>"
+    + "</div></div>"
+    + "</div></div>";
 
   return "<div class=\"ph\">"
     + "<div class=\"pt\">Presupuesto &#8212; " + MONTHS[S.selMonth] + " " + S.selYear + "</div>"
@@ -498,19 +540,36 @@ function budHtml() {
     + (function(){ var pm=S.selMonth===0?11:S.selMonth-1; var py=S.selMonth===0?S.selYear-1:S.selYear; return "<button class=\"btn-g sm\" onclick=\"loadPrevBud()\">&#8592; Copiar datos de " + MONTHS[pm] + "</button>"; })()
     + "<button class=\"btn btn-sm\" onclick=\"saveBuds()\">Guardar</button>"
     + "</div></div>"
+    + dispCard
     + grpCards
     + balBar;
 }
 
+function evalExpr(raw) {
+  // Allow simple arithmetic: 25+25, 100*3, 1000/4, 200-50
+  var s = String(raw || "").trim();
+  if (!s) return 0;
+  if (/^[\d.]+$/.test(s)) return parseFloat(s) || 0;
+  if (/^[\d.+\-*/\s()]+$/.test(s)) {
+    try { var r = Function('"use strict";return(' + s + ')')(); return isFinite(r) ? Math.round(r * 100) / 100 : 0; } catch(e) { return parseFloat(s) || 0; }
+  }
+  return parseFloat(s) || 0;
+}
 function readBudDOM() {
   var m = mk();
   if (!S.budgets[m]) S.budgets[m] = {};
   if (!S.notes[m]) S.notes[m] = {};
+  // Read disponible shared field
+  var dispEl = document.getElementById("disp_input");
+  if (dispEl) {
+    if (!S.disponible) S.disponible = {};
+    S.disponible[m] = evalExpr(dispEl.value);
+  }
   document.querySelectorAll(".ni").forEach(function(inp) {
     var uid = inp.dataset.uid, cat = inp.dataset.cat;
     if (!uid || !cat) return;
     if (!S.budgets[m][uid]) S.budgets[m][uid] = {};
-    S.budgets[m][uid][cat] = inp.value ? +inp.value : 0;
+    S.budgets[m][uid][cat] = evalExpr(inp.value);
   });
   document.querySelectorAll(".note-i").forEach(function(ta) {
     var uid = ta.dataset.un, cat = ta.dataset.cn;
@@ -518,6 +577,18 @@ function readBudDOM() {
     if (!S.notes[m][uid]) S.notes[m][uid] = {};
     S.notes[m][uid][cat] = ta.value;
   });
+}
+// Disponible field handlers
+function onDispChg() { readBudDOM(); }
+function onDispBlur() {
+  var m = mk(); var dispEl = document.getElementById("disp_input");
+  if (dispEl) {
+    var val = evalExpr(dispEl.value);
+    if (!S.disponible) S.disponible = {};
+    S.disponible[m] = val;
+    dispEl.value = val || "";
+  }
+  readBudDOM(); render();
 }
 
 var _deb;
@@ -531,10 +602,14 @@ function onBudBlur() {
 window.saveBuds = function() {
   readBudDOM();
   var us = allUsers(); var m = mk();
-  Promise.all(us.map(function(u) {
+  var saves = us.map(function(u) {
     return fbSet("budgets", m + "_" + u.id, { data: S.budgets[m][u.id] || {} })
       .then(function() { return fbSet("notes", m + "_" + u.id, { data: S.notes[m][u.id] || {} }); });
-  })).then(function() { toast("Presupuesto guardado &#10003;"); });
+  });
+  // Save shared disponible field
+  var disp = (S.disponible && S.disponible[m]) || 0;
+  saves.push(fbSet("budgets", m + "_shared", { disponible: disp }));
+  Promise.all(saves).then(function() { toast("Presupuesto guardado &#10003;"); });
 };
 
 window.loadPrevBud = function() {
@@ -774,8 +849,21 @@ function bindAll() {
   });
   document.querySelectorAll(".ni").forEach(function(inp) {
     inp.addEventListener("input", onBudChg);
-    inp.addEventListener("blur", onBudBlur);
+    inp.addEventListener("blur", function() {
+      // Evaluate expression and display result
+      var val = evalExpr(inp.value);
+      inp.value = val || "";
+      onBudBlur();
+    });
+    inp.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") { e.preventDefault(); this.blur(); }
+    });
   });
+  // Disponible input Enter key
+  var dispEl2 = document.getElementById("disp_input");
+  if (dispEl2) {
+    dispEl2.addEventListener("keydown", function(e) { if (e.key === "Enter") { e.preventDefault(); this.blur(); } });
+  }
   document.querySelectorAll(".note-i").forEach(function(ta) {
     ta.addEventListener("input", function() {
       this.style.height = "auto"; this.style.height = this.scrollHeight + "px"; onBudChg();
@@ -978,7 +1066,7 @@ function dashHtml() {
 
 function dashCol(u) {
   var col = u.color || "#6366f1";
-  var bud = totBudSpend(u.id); var sp = totSpent(u.id); var inc = totIncome(u.id); var av = bud - sp;
+  var bud = totBudSpend(u.id); var sp = totSpent(u.id); var av = bud - sp;
   var pct = bud > 0 ? Math.min(sp / bud * 100, 100) : 0;
   // Build detail list of counted transactions
   var txDetail = getTx(u.id)
@@ -1004,7 +1092,6 @@ function dashCol(u) {
     + "<div class=\"dash-ch\" style=\"border-top:3px solid " + col + "\">"
     + "<div class=\"av\" style=\"width:26px;height:26px;font-size:11px;background:" + col + "\">" + u.name[0].toUpperCase() + "</div>" + u.name + "</div>"
     + "<div class=\"dash-cb\">"
-    + kpiB("Ingresos presup.", euro(inc))
     + kpiB("Gasto presup.", euro(bud))
     + kpi("Gastado real", euro(sp), sp > bud && bud > 0 ? "var(--red)" : "var(--tx)")
     + kpi("Disponible", euro(av), av < 0 ? "var(--red)" : "var(--tx)")
@@ -1016,12 +1103,10 @@ function dashCol(u) {
 function dashColCons(us) {
   var bud = us.reduce(function(s, u) { return s + totBudSpend(u.id); }, 0);
   var sp  = us.reduce(function(s, u) { return s + totSpent(u.id); }, 0);
-  var inc = us.reduce(function(s, u) { return s + totIncome(u.id); }, 0);
   var av = bud - sp; var pct = bud > 0 ? Math.min(sp / bud * 100, 100) : 0;
   return "<div class=\"dash-c\">"
     + "<div class=\"dash-ch\" style=\"border-top:3px solid var(--teal)\"><span class=\"badge b-cons\" style=\"font-size:13px\">Consolidado</span></div>"
     + "<div class=\"dash-cb\">"
-    + kpiB("Ingresos presup.", euro(inc))
     + kpiB("Gasto presup.", euro(bud))
     + kpi("Gastado real", euro(sp), sp > bud && bud > 0 ? "var(--red)" : "var(--tx)")
     + kpi("Disponible", euro(av), av < 0 ? "var(--red)" : "var(--tx)")
@@ -1118,13 +1203,19 @@ function loadMonthData() {
   if (!S.budgets[m]) S.budgets[m] = {};
   if (!S.notes[m]) S.notes[m] = {};
   if (!S.transactions[m]) S.transactions[m] = {};
-  return Promise.all(us.map(function(u) {
+  if (!S.disponible) S.disponible = {};
+  var loads = us.map(function(u) {
     return Promise.all([
       fbGet("budgets", m + "_" + u.id).then(function(d) { S.budgets[m][u.id] = d && d.data ? d.data : {}; }),
       fbGet("notes", m + "_" + u.id).then(function(d) { S.notes[m][u.id] = d && d.data ? d.data : {}; }),
       fbGet("transactions", m + "_" + u.id).then(function(d) { S.transactions[m][u.id] = d && d.list ? d.list : []; })
     ]);
+  });
+  // Load shared disponible
+  loads.push(fbGet("budgets", m + "_shared").then(function(d) {
+    S.disponible[m] = d && d.disponible ? +d.disponible : 0;
   }));
+  return Promise.all(loads);
 }
 
 // ═══ INIT ══════════════════════════════════════════════════════════════════
