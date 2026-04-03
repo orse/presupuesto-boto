@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0078)file:///Users/orse.olsenjobandtalent.com/Downloads/presupuesto-familiar_7.html -->
+<!-- saved from url=(0078)file:///Users/orse.olsenjobandtalent.com/Downloads/presupuesto-familiar_8.html -->
 <html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -107,6 +107,8 @@ button{font-family:inherit;cursor:pointer;font-size:15px;font-weight:500}
 /* Sticky balance bar */
 .bal-bar{position:fixed;bottom:0;left:0;right:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--bd);box-shadow:0 -2px 12px rgba(0,0,0,.07)}
 .bal-inner{max-width:1160px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.bal-bar-static{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rl);box-shadow:var(--sh);margin-top:16px}
+.bal-bar-static .bal-inner{padding:16px 20px}
 /* Tooltip */
 .info-b{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--sf3);border:1.5px solid var(--bd2);color:var(--tx3);font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;margin-left:5px;font-family:serif;transition:all .15s}
 .info-b:hover{background:var(--blue-bg);border-color:var(--blue);color:var(--blue)}
@@ -125,10 +127,18 @@ button{font-family:inherit;cursor:pointer;font-size:15px;font-weight:500}
 .b-cons{background:var(--teal-bg);color:var(--teal)}
 
 /* ── Mobile responsive ─────────────────────────────────────────────────── */
+.bal-bar-mob{display:none}
+.bal-bar-desk{display:block}
+.filter-btn-group{display:flex;gap:4px}
+.filter-select{display:none}
+@media(max-width:600px){
+  .bal-bar-desk{display:none}
+  .bal-bar-mob{display:block}
+}
 @media(max-width:600px){
   /* Global */
   body{font-size:15px}
-  .main{padding:16px 12px;padding-bottom:100px}
+  .main{padding:16px 12px;padding-bottom:20px}
   .hdr{padding:10px 14px}
   .nav{padding:6px 10px}
   .tab-btn{padding:7px 11px;font-size:14px}
@@ -150,6 +160,8 @@ button{font-family:inherit;cursor:pointer;font-size:15px;font-weight:500}
   .budget-tbl td:first-child{grid-column:1/-1;font-size:13px;font-weight:600;color:var(--tx);padding-bottom:6px !important}
   /* Transactions */
   .tx-cols{grid-template-columns:1fr}
+  .filter-btn-group{display:none}
+  .filter-select{display:block}
   .tx-row{padding:10px 12px}
   .tx-ph{flex-direction:column;align-items:flex-start;gap:8px}
   .tx-body{padding:10px;max-height:none}
@@ -173,7 +185,7 @@ button{font-family:inherit;cursor:pointer;font-size:15px;font-weight:500}
   <div style="font-size:15px;font-weight:500;color:#1d1d1f;margin-top:8px">Conectando…</div>
   <div id="le" style="color:#ff3b30;font-size:14px;display:none;max-width:340px;text-align:center;line-height:1.7;margin-top:12px"></div>
 </div>
-<div id="app" style="display: block;"><header class="hdr"><div style="display:flex;align-items:center;gap:16px"><span style="font-weight:700;font-size:15px;color:var(--blue)">◆ Presupuesto</span><div style="display:flex;gap:6px"><select onchange="setMon(+this.value)" style="width:auto;padding:5px 9px;font-size:12px;background:var(--sf2)"><option value="0">Enero</option><option value="1">Febrero</option><option value="2">Marzo</option><option value="3" selected="">Abril</option><option value="4">Mayo</option><option value="5">Junio</option><option value="6">Julio</option><option value="7">Agosto</option><option value="8">Septiembre</option><option value="9">Octubre</option><option value="10">Noviembre</option><option value="11">Diciembre</option></select><select onchange="setYr(+this.value)" style="width:auto;padding:5px 9px;font-size:12px;background:var(--sf2)"><option value="2025">2025</option><option value="2026" selected="">2026</option><option value="2027">2027</option></select></div></div><div style="display:flex;align-items:center;gap:10px"><div class="av" style="width:30px;height:30px;font-size:13px;background:#007361">O</div><span style="font-size:13px;color:var(--tx2);font-weight:500">Olga</span><button class="btn-g sm" onclick="logout()">Salir</button></div></header><nav class="nav"><button class="tab-btn active" onclick="setTab(&#39;budget&#39;)">Presupuesto</button><button class="tab-btn" onclick="setTab(&#39;transactions&#39;)">Movimientos</button><button class="tab-btn" onclick="setTab(&#39;dashboard&#39;)">Dashboard</button><button class="tab-btn" onclick="setTab(&#39;advice&#39;)">Consejos</button></nav><main class="main"><div class="ph"><div class="pt">Presupuesto — Abril 2026</div><div style="display:flex;gap:8px"><button class="btn-g sm" onclick="loadPrevBud()">← Copiar datos de Marzo</button><button class="btn btn-sm" onclick="saveBuds()">Guardar</button></div></div><div class="grp-card" style="margin-bottom:16px"><div class="grp-hdr collapsed" style="cursor:default"><span style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--tx3)">Disponible para este mes</span></div><div class="disp-card-inner" style="padding:16px 20px;display:flex;align-items:center;gap:24px;flex-wrap:wrap"><div><div style="font-size:11px;color:var(--tx3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Ahorro disponible</div><div style="display:flex;align-items:center;gap:8px"><input type="text" id="disp_input" value="7000.5" placeholder="0" oninput="onDispChg()" onblur="onDispBlur()" style="width:180px;font-size:18px;font-weight:700;text-align:right;border:1.5px solid var(--bd2);border-radius:var(--r);padding:8px 12px"><span style="font-size:13px;color:var(--tx3)">€</span></div><div style="font-size:12px;color:var(--tx3);margin-top:4px">Campo compartido Orse + Olga</div></div></div></div><div class="grp-card"><div class="grp-hdr collapsed" onclick="toggleGrp(&#39;fixed&#39;)"><span style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--tx3)">Gastos fijos</span><span style="font-size:12px;color:var(--tx3)">▶</span></div></div><div class="grp-card"><div class="grp-hdr collapsed" onclick="toggleGrp(&#39;variable&#39;)"><span style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--tx3)">Gastos variables</span><span style="font-size:12px;color:var(--tx3)">▶</span></div></div><div class="grp-card"><div class="grp-hdr collapsed" onclick="toggleGrp(&#39;leisure&#39;)"><span style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--tx3)">Gastos ocio</span><span style="font-size:12px;color:var(--tx3)">▶</span></div></div><div class="bal-bar"><div class="bal-inner"><div style="display:flex;gap:24px;flex-wrap:wrap"><div style="display:flex;align-items:center;gap:6px"><div class="av" style="width:22px;height:22px;font-size:9px;background:#6366f1">O</div><span style="font-size:13px;color:var(--tx2)">Orse necesita</span><span style="font-size:16px;font-weight:700;color:#6366f1">4009,76&nbsp;€</span></div><div style="display:flex;align-items:center;gap:6px"><div class="av" style="width:22px;height:22px;font-size:9px;background:#007361">O</div><span style="font-size:13px;color:var(--tx2)">Olga necesita</span><span style="font-size:16px;font-weight:700;color:#007361">2962,5&nbsp;€</span></div></div><div style="display:flex;align-items:center;gap:12px;min-width:220px"><div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--tx3);margin-bottom:4px"><span>Gasto vs. disponible</span><span style="font-weight:700;color:var(--yellow)">100%</span></div><div class="bar-bg" style="height:8px"><div class="bar-fill" style="width:99.5966002428398%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--green);margin-top:3px;font-weight:600">28,24&nbsp;€ por debajo del disponible</div></div></div></div></div></main></div>
+<div id="app" style="display: block;"><header class="hdr"><div style="display:flex;align-items:center;gap:8px"><select onchange="setMon(+this.value)" style="width:auto;padding:5px 9px;font-size:13px;background:var(--sf2)"><option value="0">Enero</option><option value="1">Febrero</option><option value="2">Marzo</option><option value="3" selected="">Abril</option><option value="4">Mayo</option><option value="5">Junio</option><option value="6">Julio</option><option value="7">Agosto</option><option value="8">Septiembre</option><option value="9">Octubre</option><option value="10">Noviembre</option><option value="11">Diciembre</option></select><select onchange="setYr(+this.value)" style="width:auto;padding:5px 9px;font-size:13px;background:var(--sf2)"><option value="2025">2025</option><option value="2026" selected="">2026</option><option value="2027">2027</option></select></div><div style="display:flex;align-items:center;gap:8px"><div class="av" style="width:32px;height:32px;font-size:14px;cursor:pointer;background:#6366f1" title="Orse — Salir" onclick="logout()">O</div></div></header><nav class="nav"><button class="tab-btn active" onclick="setTab(&#39;budget&#39;)">Presupuesto</button><button class="tab-btn" onclick="setTab(&#39;transactions&#39;)">Movimientos</button><button class="tab-btn" onclick="setTab(&#39;dashboard&#39;)">Dashboard</button><button class="tab-btn" onclick="setTab(&#39;advice&#39;)">Consejos</button></nav><main class="main"><div class="ph"><div class="pt">Presupuesto — Abril 2026</div><div style="display:flex;gap:8px"><button class="btn-g sm" onclick="loadPrevBud()">← Copiar datos de Marzo</button><button class="btn btn-sm" onclick="saveBuds()">Guardar</button></div></div><div class="grp-card" style="margin-bottom:16px"><div class="grp-hdr collapsed" style="cursor:default"><span style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--tx3)">Disponible para este mes</span></div><div class="disp-card-inner" style="padding:16px 20px;display:flex;align-items:center;gap:24px;flex-wrap:wrap"><div><div style="font-size:11px;color:var(--tx3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Ahorro disponible</div><div style="display:flex;align-items:center;gap:8px"><input type="text" id="disp_input" value="7000.5" placeholder="0" oninput="onDispChg()" onblur="onDispBlur()" style="width:180px;font-size:18px;font-weight:700;text-align:right;border:1.5px solid var(--bd2);border-radius:var(--r);padding:8px 12px"><span style="font-size:13px;color:var(--tx3)">€</span></div><div style="font-size:12px;color:var(--tx3);margin-top:4px">Campo compartido Orse + Olga</div></div></div></div><div class="grp-card"><div class="grp-hdr collapsed" onclick="toggleGrp(&#39;fixed&#39;)"><span style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--tx3)">Gastos fijos</span><span style="font-size:12px;color:var(--tx3)">▶</span></div></div><div class="grp-card"><div class="grp-hdr collapsed" onclick="toggleGrp(&#39;variable&#39;)"><span style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--tx3)">Gastos variables</span><span style="font-size:12px;color:var(--tx3)">▶</span></div></div><div class="grp-card"><div class="grp-hdr collapsed" onclick="toggleGrp(&#39;leisure&#39;)"><span style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--tx3)">Gastos ocio</span><span style="font-size:12px;color:var(--tx3)">▶</span></div></div><div class="bal-bar bal-bar-desk"><div class="bal-inner"><div style="display:flex;gap:24px;flex-wrap:wrap"><div style="display:flex;align-items:center;gap:6px"><div class="av" style="width:22px;height:22px;font-size:9px;background:#6366f1">O</div><span style="font-size:13px;color:var(--tx2)">Orse necesita</span><span style="font-size:16px;font-weight:700;color:#6366f1">4009,76&nbsp;€</span></div><div style="display:flex;align-items:center;gap:6px"><div class="av" style="width:22px;height:22px;font-size:9px;background:#007361">O</div><span style="font-size:13px;color:var(--tx2)">Olga necesita</span><span style="font-size:16px;font-weight:700;color:#007361">2962,5&nbsp;€</span></div></div><div style="display:flex;align-items:center;gap:12px;min-width:220px"><div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--tx3);margin-bottom:4px"><span>Gasto vs. disponible</span><span style="font-weight:700;color:var(--yellow)">100%</span></div><div class="bar-bg" style="height:8px"><div class="bar-fill" style="width:99.5966002428398%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--green);margin-top:3px;font-weight:600">28,24&nbsp;€ por debajo del disponible</div></div></div></div></div><div class="bal-bar-static bal-bar-mob"><div class="bal-inner"><div style="display:flex;gap:24px;flex-wrap:wrap"><div style="display:flex;align-items:center;gap:6px"><div class="av" style="width:22px;height:22px;font-size:9px;background:#6366f1">O</div><span style="font-size:13px;color:var(--tx2)">Orse necesita</span><span style="font-size:16px;font-weight:700;color:#6366f1">4009,76&nbsp;€</span></div><div style="display:flex;align-items:center;gap:6px"><div class="av" style="width:22px;height:22px;font-size:9px;background:#007361">O</div><span style="font-size:13px;color:var(--tx2)">Olga necesita</span><span style="font-size:16px;font-weight:700;color:#007361">2962,5&nbsp;€</span></div></div><div style="display:flex;align-items:center;gap:12px;min-width:220px"><div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--tx3);margin-bottom:4px"><span>Gasto vs. disponible</span><span style="font-weight:700;color:var(--yellow)">100%</span></div><div class="bar-bg" style="height:8px"><div class="bar-fill" style="width:99.5966002428398%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--green);margin-top:3px;font-weight:600">28,24&nbsp;€ por debajo del disponible</div></div></div></div></div></main></div>
 <div id="toast" class="toast"></div>
 <script>
 
@@ -436,19 +448,15 @@ function appHtml() {
     : S.tab === "dashboard" ? dashHtml()
     : advHtml();
   return "<header class=\"hdr\">"
-    + "<div style=\"display:flex;align-items:center;gap:16px\">"
-    + "<span style=\"font-weight:700;font-size:15px;color:var(--blue)\">&#9670; Presupuesto</span>"
-    + "<div style=\"display:flex;gap:6px\">"
-    + "<select onchange=\"setMon(+this.value)\" style=\"width:auto;padding:5px 9px;font-size:12px;background:var(--sf2)\">"
+    + "<div style=\"display:flex;align-items:center;gap:8px\">"
+    + "<select onchange=\"setMon(+this.value)\" style=\"width:auto;padding:5px 9px;font-size:13px;background:var(--sf2)\">"
     + MONTHS.map(function(m, i) { return "<option value=\"" + i + "\"" + (i === S.selMonth ? " selected" : "") + ">" + m + "</option>"; }).join("")
     + "</select>"
-    + "<select onchange=\"setYr(+this.value)\" style=\"width:auto;padding:5px 9px;font-size:12px;background:var(--sf2)\">"
+    + "<select onchange=\"setYr(+this.value)\" style=\"width:auto;padding:5px 9px;font-size:13px;background:var(--sf2)\">"
     + [NOW.getFullYear()-1, NOW.getFullYear(), NOW.getFullYear()+1].map(function(y) { return "<option value=\"" + y + "\"" + (y === S.selYear ? " selected" : "") + ">" + y + "</option>"; }).join("")
-    + "</select></div></div>"
-    + "<div style=\"display:flex;align-items:center;gap:10px\">"
-    + "<div class=\"av\" style=\"width:30px;height:30px;font-size:13px;background:" + col + "\">" + S.user.name[0].toUpperCase() + "</div>"
-    + "<span style=\"font-size:13px;color:var(--tx2);font-weight:500\">" + S.user.name + "</span>"
-    + "<button class=\"btn-g sm\" onclick=\"logout()\">Salir</button>"
+    + "</select></div>"
+    + "<div style=\"display:flex;align-items:center;gap:8px\">"
+    + "<div class=\"av\" style=\"width:32px;height:32px;font-size:14px;cursor:pointer;background:" + col + "\" title=\"" + esc(S.user.name) + " — Salir\" onclick=\"logout()\">" + S.user.name[0].toUpperCase() + "</div>"
     + "</div></header>"
     + "<nav class=\"nav\">" + nav + "</nav>"
     + "<main class=\"main\">" + content + "</main>";
@@ -565,8 +573,7 @@ function budHtml() {
       + "<span style=\"font-size:16px;font-weight:700;color:" + uc + "\">" + euro(need) + "</span>"
       + "</div>";
   }).join("");
-  var balBar = "<div class=\"bal-bar\"><div class=\"bal-inner\">"
-    + "<div style=\"display:flex;gap:24px;flex-wrap:wrap\">" + userNeeds + "</div>"
+  var balBarContent = "<div style=\"display:flex;gap:24px;flex-wrap:wrap\">" + userNeeds + "</div>"
     + "<div style=\"display:flex;align-items:center;gap:12px;min-width:220px\">"
     + "<div style=\"flex:1\">"
     + "<div style=\"display:flex;justify-content:space-between;font-size:12px;color:var(--tx3);margin-bottom:4px\">"
@@ -577,9 +584,13 @@ function budHtml() {
         if (diff < 0) return "<div style=\"font-size:11px;color:var(--red);margin-top:3px;font-weight:600\">" + euro(Math.abs(diff)) + " por encima del disponible</div>";
         return "<div style=\"font-size:11px;color:var(--green);margin-top:3px;font-weight:600\">" + euro(diff) + " por debajo del disponible</div>";
       })()
-    + "</div></div>"
     + "</div></div>";
-
+  var balBar = "<div class=\"bal-bar bal-bar-desk\"><div class=\"bal-inner\">"
+    + balBarContent
+    + "</div></div>"
+    + "<div class=\"bal-bar-static bal-bar-mob\"><div class=\"bal-inner\">"
+    + balBarContent
+    + "</div></div>";
   return "<div class=\"ph\">"
     + "<div class=\"pt\">Presupuesto &#8212; " + MONTHS[S.selMonth] + " " + S.selYear + "</div>"
     + "<div style=\"display:flex;gap:8px\">"
@@ -804,14 +815,20 @@ function txPanel(u) {
   var txCatF  = S.txCatFilter[uid] || "";
   var allCatsList = [{ id: "", name: "Todas las categorias" }].concat(CATS);
 
+  var stateLabels = {all:"Todos",pending:"Pendientes",done:"Categorizados",ignored:"Ignorados"};
   var filterBar = isMe ? (
-    "<div style=\"display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;align-items:center\">"
-    + "<div style=\"display:flex;gap:4px\">"
-    + ["all","pending","done","ignored"].map(function(st){ var lbl={all:"Todos",pending:"Pendientes",done:"Categorizados",ignored:"Ignorados"}[st]; return "<button class=\"btn-g sm" + (txState===st?" active":"") + "\" onclick=\"setTxState('" + uid + "','" + st + "')\">" + lbl + "</button>"; }).join("")
+    "<div style=\"margin-bottom:10px\">"
+    // Desktop: button group
+    + "<div class=\"filter-btn-group\">"
+    + ["all","pending","done","ignored"].map(function(st){ return "<button class=\"btn-g sm" + (txState===st?" active":"") + "\" onclick=\"setTxState('" + uid + "','" + st + "')\">" + stateLabels[st] + "</button>"; }).join("")
     + "</div>"
-    + (txState==="done" ? "<select onchange=\"setTxCatFilter('" + uid + "',this.value)\" style=\"width:auto;min-height:36px;font-size:13px;padding:5px 10px\">"
+    // Mobile: select dropdown
+    + "<select class=\"filter-select\" onchange=\"setTxState('" + uid + "',this.value)\" style=\"width:100%;min-height:40px;font-size:14px\">"
+    + ["all","pending","done","ignored"].map(function(st){ return "<option value=\"" + st + "\"" + (txState===st?" selected":"") + ">" + stateLabels[st] + "</option>"; }).join("")
+    + "</select>"
+    + (txState==="done" ? "<div style=\"margin-top:8px\"><select onchange=\"setTxCatFilter('" + uid + "',this.value)\" style=\"width:100%;min-height:36px;font-size:13px;padding:5px 10px\">"
         + allCatsList.map(function(c){ return "<option value=\"" + c.id + "\"" + (txCatF===c.id?" selected":"") + ">" + c.name + "</option>"; }).join("")
-        + "</select>" : "")
+        + "</select></div>" : "")
     + "</div>"
   ) : "";
 
